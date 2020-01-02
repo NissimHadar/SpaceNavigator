@@ -72,31 +72,31 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>bin\win32i\debug\</OutDir>
     <IntDir>bin\win32i\debug\</IntDir>
-    <IncludePath>SDK\Inc;$(IncludePath)</IncludePath>
+    <IncludePath>C:\eloupes\third-party\include\nanomsg;SDK\Inc;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>bin\win64x64\debug\</OutDir>
     <IntDir>bin\win64x64\debug\</IntDir>
-    <IncludePath>SDK\Inc;$(IncludePath)</IncludePath>
+    <IncludePath>C:\eloupes\third-party\include\nanomsg;SDK\Inc;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>bin\win32i\release\</OutDir>
     <IntDir>bin\win32i\release\</IntDir>
-    <IncludePath>SDK\Inc;$(IncludePath)</IncludePath>
+    <IncludePath>C:\eloupes\third-party\include\nanomsg;SDK\Inc;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>bin\win64x64\release\</OutDir>
     <IntDir>bin\win64x64\release\</IntDir>
-    <IncludePath>SDK\Inc;$(IncludePath)</IncludePath>
+    <IncludePath>C:\eloupes\third-party\include\nanomsg;SDK\Inc;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NN_STATIC_LIB;WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -107,8 +107,8 @@
       <FixedBaseAddress>false</FixedBaseAddress>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>SDK\Lib;..\..\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>siapp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>SDK\Lib;C:\eloupes\third-party\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;mswsock.lib;advapi32.lib;siapp.lib;nanomsg.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent Condition="'$(TDxBuildCopyToInstall)'=='1'">
       <Command>xcopy "$(TargetPath)" "$(TDxWareInstallDir)" /y/r/h</Command>
@@ -119,7 +119,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NN_STATIC_LIB;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -130,8 +130,8 @@
       <FixedBaseAddress>false</FixedBaseAddress>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>SDK\Lib;..\..\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>siapp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>SDK\Lib;C:\eloupes\third-party\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;mswsock.lib;advapi32.lib;siapp.lib;nanomsg.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent Condition="'$(TDxBuildCopyToInstall)'=='1'">
       <Command>xcopy "$(TargetPath)" "$(TDxWareInstallDir)" /y/r/h</Command>
@@ -144,10 +144,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NN_STATIC_LIB;WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -158,8 +158,8 @@
       <FixedBaseAddress>false</FixedBaseAddress>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>SDK\Lib;..\..\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>siapp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>SDK\Lib;C:\eloupes\third-party\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;mswsock.lib;advapi32.lib;siapp.lib;nanomsg.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent Condition="'$(TDxBuildCopyToInstall)'=='1'">
       <Command>xcopy "$(TargetPath)" "$(TDxWareInstallDir)" /y/r/h</Command>
@@ -172,10 +172,10 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NN_STATIC_LIB;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -186,8 +186,8 @@
       <FixedBaseAddress>false</FixedBaseAddress>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalLibraryDirectories>SDK\Lib;..\..\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>siapp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>SDK\Lib;C:\eloupes\third-party\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;mswsock.lib;advapi32.lib;siapp.lib;nanomsg.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent Condition="'$(TDxBuildCopyToInstall)'=='1'">
       <Command>xcopy "$(TargetPath)" "$(TDxWareInstallDir)" /y/r/h</Command>

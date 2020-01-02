@@ -43,6 +43,9 @@ static char CvsId[]="(C) 1997-2015 3Dconnexion: $Id: 3DxTest32.cpp 14661 2018-01
 /* Program Specific Includes */
 #include "3DxTest32.h"
 
+#include <nn.h>
+#include <pipeline.h>
+
 /* Global variables */
 HDC          hdc;         /* Handle to Device Context used to draw on screen */
 HWND         hWndMain;    /* Handle to Main Window */
@@ -50,6 +53,7 @@ HWND         hWndMain;    /* Handle to Main Window */
 SiHdl        devHdl;      /* Handle to 3D Mouse Device */
 TCHAR devicename[100] = _T("");
 
+int sock;
 
 /*----------------------------------------------------------------------
 * Function: WinMain()
@@ -101,6 +105,13 @@ int WINAPI WinMain ( HINSTANCE hInstance, HINSTANCE hPrevInstance,
     ExitProcess(1);                /* exit program */
   }
 
+  if ((sock = nn_socket(AF_SP, NN_PULL)) < 0) {
+    MessageBox(hWndMain, _T("Opening Socket Failed\n"), NULL, MB_OK);
+  }
+
+  if (nn_bind(sock, "ipc:///tmp/pipeline.ipc") < 0) {
+    MessageBox(hWndMain, _T("Dialing Connection Failed.\n"), NULL, MB_OK);
+  }
   /* Function To be Repeated */
   return(DispatchLoopNT());
 
